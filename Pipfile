@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+scipy = "*"
+pandas = "*"
+algorithm-x = "*"
+
+[dev-packages]
+icecream = "*"
+
+[requires]
+python_version = "3.13"

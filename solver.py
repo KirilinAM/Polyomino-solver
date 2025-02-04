@@ -5,7 +5,7 @@ from icecream import ic
 from scipy.ndimage import correlate
 from algorithm_x import AlgorithmX
 
-class polymino:
+class polyomino:
     def __init__(self,figures: list[np.ndarray[bool]],area: np.ndarray[bool],is_rotate=True):
         self.figures = figures
         self.area = area
@@ -158,7 +158,7 @@ def main():
     ]
 
 
-    pm = polymino(figures,area)
+    pm = polyomino(figures,area)
     # print(pm.df_algorithm_X_matrix)
     solutions = pm.solve()
     for solution in solutions:

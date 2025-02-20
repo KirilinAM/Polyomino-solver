@@ -1,7 +1,5 @@
 import numpy as np
 import pandas as pd
-from pprint import pprint
-from icecream import ic
 from scipy.ndimage import correlate
 from algorithm_x import AlgorithmX
 
@@ -102,7 +100,7 @@ def make_array_as_kernel(array):
 
 def main():
     area = np.ones((6,4))
-    ic(area)
+    # ic(area)
 
     # figures = [
     #     np.array([

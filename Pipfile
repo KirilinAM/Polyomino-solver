@@ -11,6 +11,7 @@ algorithm-x = "*"
 
 [dev-packages]
 icecream = "*"
+setuptools = "*"
 
 [requires]
 python_version = "3.13"

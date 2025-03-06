@@ -14,7 +14,7 @@ class polyomino:
         )
         # self._df_algorithm_X_matrix = pd.DataFrame(columns=self.columns)
 
-    def solve(self):
+    def solve(self,get_only_one_solve=True):
         solver_len = len(self.columns)
         solver = AlgorithmX(solver_len)
         #Перебрать фигуры
@@ -32,11 +32,12 @@ class polyomino:
         #Провести алгоритм Х
         solutions = solver.solve()
         #Преобразовать результаты алгоритма Х в понятный вид
-        sweet_solutions = [self.get_sweet_solution(solution) for solution in solutions]
+        sweet_solutions = (self.get_sweet_solution(solution) for solution in solutions)
         #Вывести результаты
-        if len(sweet_solutions) == 0:
-            print('There are no solutions')
-        return sweet_solutions 
+        if get_only_one_solve:
+            return next(sweet_solutions)
+        else:
+            return sweet_solutions
 
     def get_figure_variables(self,figure):
         rotate_counts = list(range(len(self.rotates)))
@@ -82,7 +83,7 @@ class polyomino:
             figure_loc = figure[2]
             for coord in figure_loc:
                 area[*coord] = figure_idx
-        return area
+        return np.array(area,dtype=int)
 
 def get_rotates(figure,rotate_counts=[0,1,2,3]):
     figure = np.array(figure)
@@ -101,33 +102,6 @@ def make_array_as_kernel(array):
 def main():
     area = np.ones((6,4))
     # ic(area)
-
-    # figures = [
-    #     np.array([
-    #         [1,1,1]
-    #         ,[0,1,0]
-    #     ])
-    #     ,np.array([
-    #         [1,1,1]
-    #         ,[0,1,0]
-    #     ])
-    #     ,np.array([
-    #         [1,0,0]
-    #         ,[1,1,1]
-    #     ])
-    #     ,np.array([
-    #         [1,0,0]
-    #         ,[1,1,1]
-    #     ])
-    #     ,np.array([
-    #         [1,1,1]
-    #         ,[1,0,0]
-    #     ])
-    #     ,np.array([
-    #         [1,1,0]
-    #         ,[0,1,1]
-    #     ])
-    # ]
 
     figures = [
         np.array([
@@ -158,7 +132,7 @@ def main():
 
     pm = polyomino(figures,area)
     # print(pm.df_algorithm_X_matrix)
-    solutions = pm.solve()
+    solutions = pm.solve(False)
     for solution in solutions:
         print(solution)
 

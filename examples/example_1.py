@@ -32,4 +32,4 @@ figures = [
 
 pm = polyomino(figures,area)
 solutions = pm.solve()
-print(solutions[0])
+print(solutions)

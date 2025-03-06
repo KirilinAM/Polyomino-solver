@@ -31,5 +31,6 @@ figures = [
 
 
 pm = polyomino(figures,area)
-solutions = pm.solve()
-print(solutions)
+solutions = pm.solve(False)
+for solution in solutions:
+    print(solution)

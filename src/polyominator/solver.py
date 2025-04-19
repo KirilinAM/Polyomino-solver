@@ -6,7 +6,7 @@ from algorithm_x import AlgorithmX
 class polyomino:
     def __init__(self,figures: list[np.ndarray[bool]],area: np.ndarray[bool],is_rotate=True):
         self.figures = figures
-        self.area = area
+        self.area = np.array(area).astype('float')
         self.rotates = [90*i for i in range((4 if is_rotate else 1))]
         self.columns = pd.MultiIndex.from_tuples(
             [('Figures',i) for i in range(len(figures))]

@@ -3,8 +3,6 @@ from setuptools import setup, find_packages
 import json
 import os
 
-from icecream import ic
-
 def read_pipenv_dependencies(fname):
     """Получаем из Pipfile.lock зависимости по умолчанию."""
     filepath = os.path.join(os.path.dirname(__file__), fname)

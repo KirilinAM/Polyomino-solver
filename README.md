@@ -1,15 +1,16 @@
 # Polyomino-solver
-Решение задачи точного замощения полимино заданным набором фигур. 
-Программа переводит задачу полимино на язык Алгоритма Х. Для решения Алгоритма Х используется библиотека algorithm-x.
+Solving the problem of accurately paving polyominoes with a given set of shapes. 
+The program translates the polymino problem into the language of the X-algorithm. The `algorithm-x` library is used to solve Algorithm X.
 
 ## Методичка
-В общем виде пользование пакетом выглядит так:
-1. Подключите пакет и numpy
+In general, using the package looks like this:
+1. Connect the package and numpy
 ```python
 import numpy as np
 from polyominator import polyomino
 ```
-2. Задайте поле как массив, где 1 --- ячейка для замощения, 0 --- не для замощения (типа, булев массив). Например, прямоугольное поле 3х2 будет выглядеть так:
+
+2. Set the field as an array, where 1 is a cell for paving, 0 is not for paving (like a Boolean array). For example, a 3x3 square field will look like this:
 ```python
 area = np.array([
     [1,1,1],
@@ -17,7 +18,8 @@ area = np.array([
     [1,1,1]
 ])
 ```
-3. Задайте фигуры как массивы, где 1 --- элемент фигуры, 0 --- свободное пространство (опять буллев массив). Например, вот 3-сегментный уголок, 2-сегментная палка и одиночный сегмент, соответственно:
+
+3. Set the shapes as arrays, where 1 is the element of the shape, 0 is the free space (again a Boolean array). For example, here is a 3-segment corner, a 2-segment stick, and a single segment, respectively:
 ```python
 corner = np.array([
     [1,1],
@@ -30,14 +32,16 @@ ceil = np.array([
     [1]
 ])
 ```
-Обратите внимание, что нет какого то фиксированного размера массива для фигур. Главное чтоб фигура помещалась в массив.
+> Please note that there is no fixed size of the array for the shapes. The main thing is that the shape fits into the array.
 
-4. Передайте поле и список фигур в класс `polyomino`.
+4. Pass the field and the list of shapes to the `polyomino' class.
 ```python
 figures = [corner,corner,stick,ceil]
 pm = polyomino(figures=figures,area=area)
 ```
-5. Получите единственное решение (аргумент метода `get_only_one_solve = True`) или генератор всех решений (`get_only_one_solve = False`) использовав метод `solve`. По умолчанию `get_only_one_solve = True`.
+
+5. Get a single solution (with the argument `get_only_one_solve = True`) or a generator of all solutions (`get_only_one_solve = False`) using the `solve` method. 
+> By default, `get_only_one_solve = True`.
 ```python
 solution = pm.solve()
 #solutions_generator = pm.solve(False)
@@ -47,23 +51,23 @@ solution = pm.solve()
 >>>  [3 1 1]]
 ```
 
-### Как выглядит решение
-Решение, которое (или которые) вам вернет программа, выглядят как массив, размерностью совпадающий с полем, и заполненый числами. Если вам кажется, что эти числа образуют фигуры, вам не кажется. При передачи фигур в класс, они нуммеруются в порядке передачи (с 0). В данном случае:
+### What does the solution look like
+The solution that (or which) the program will return to you, they look like an array with the same dimension as the field, and filled with numbers. If it seems to you that these numbers form shapes, it doesn't seem to you. When transferring figures to a class, they are numbered in the order of transfer (from 0). In this case:
 - 0: corner,
 - 1: corner,
 - 2: stick,
 - 3: ceil.
 
-И из этих цифр формируется силуэт фигуры в том месте поля в который эту фигуру надо сунуть.
+And these numbers form the silhouette of the figure in the place of the field in which this figure should be inserted.
 
-## Пример
-Даны поле и фигуры для замощения:
+## Example
+The field and the shapes for paving are given:
 
-![Поле для замощения](/img/empty_area.png) 
+![Paving field](/img/empty_area.png) 
 
-![Фигуры для замощения](/img/figures_with_num.png)
+![Paving shapes](/img/figures_with_num.png)
 
-Тогда поиск верного замощения представлен в файле `examples\example from readme.py`. Решение выглядит так:
+Then the search for the correct paving is presented in the file `examples\example from readme.py `. The solution looks like this:
 ```python
 >>> [[0 0 0 5]
 >>>  [1 0 5 5]
@@ -72,13 +76,13 @@ solution = pm.solve()
 >>>  [3 2 2 2]
 >>>  [3 3 3 2]]
 ```
-Т.е., итоговое расположение фигур такое:
+That is, the final arrangement of the shapes is:
 
-![Замощенное поле](/img/figured_area_with_num.png)
+![Paved field](/img/figured_area_with_num.png)
 
 
-## Заметки
-- Теоретически допускаются дырки и выступы на полях, но работоспособнность на них не провералась. Например:
+## Notes
+- Theoretically, holes and protrusions in the fields are allowed, but they have not been tested for operability. For example:
 ```python
 example_area = [
     [1,1,1,0],
@@ -86,7 +90,7 @@ example_area = [
     [1,1,1,0]
 ]
 ```
-- В классе есть флаг `is_rotate`. По идее, он регулирует могут ли фигуры вертется, или как задал - так задал. По умолчанию разворот разрешен. Работоспособность запрещения разварота не тестировалась.
+- There is an 'is_rotate` flag in the class. In theory, it regulates whether the pieces can rotate. By default, rotates are allowed, but I have not tested how the program behaves when it is forbidden.
 
-## Благодарности
-Спасибо Принципу Талоса и его прекрасным пазлам, в частности последнему желтому, за вдохновение к разработке. Лучи добра я слал Элохиму с Милтоном.
+## Thanks
+Thanks to the Talos Principle and its beautiful puzzles, in particular the last yellow one, for inspiring the development. I sent rays of goodness to Elohim and Milton, may they be healthy forever and ever.

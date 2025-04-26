@@ -12,6 +12,7 @@ algorithm-x = "*"
 [dev-packages]
 icecream = "*"
 setuptools = "*"
+twine = "*"
 
 [requires]
 python_version = "3.13"

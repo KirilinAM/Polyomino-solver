@@ -63,9 +63,9 @@ And these numbers form the silhouette of the figure in the place of the field in
 ## Example
 The field and the shapes for paving are given:
 
-![Paving field](/img/empty_area.png) 
+![Paving field](https://raw.githubusercontent.com/KirilinAM/Polyomino-solver/main/img/empty_area.png) 
 
-![Paving shapes](/img/figures_with_num.png)
+![Paving shapes](https://raw.githubusercontent.com/KirilinAM/Polyomino-solver/main/img/figures_with_num.png)
 
 Then the search for the correct paving is presented in the file `examples\example from readme.py `. The solution looks like this:
 ```python
@@ -78,7 +78,7 @@ Then the search for the correct paving is presented in the file `examples\exampl
 ```
 That is, the final arrangement of the shapes is:
 
-![Paved field](/img/figured_area_with_num.png)
+![Paved field](https://raw.githubusercontent.com/KirilinAM/Polyomino-solver/main/img/figured_area_with_num.png)
 
 
 ## Notes

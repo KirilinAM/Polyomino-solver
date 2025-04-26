@@ -2,7 +2,7 @@
 Solving the problem of accurately paving polyominoes with a given set of shapes. 
 The program translates the polymino problem into the language of the X-algorithm. The `algorithm-x` library is used to solve Algorithm X.
 
-## Методичка
+## Training manual
 In general, using the package looks like this:
 1. Connect the package and numpy
 ```python
